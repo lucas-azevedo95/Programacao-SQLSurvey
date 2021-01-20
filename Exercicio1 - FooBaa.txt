@@ -1,0 +1,29 @@
+/******************************************************************************
+
+Para testar o código, vá ao endereço https://www.onlinegdb.com/ , copie e cole o código abaixo,
+no canto superior direito altere a linguagem, no campo 'Language', para 'C' e depois no canto
+superior esquerdo clique em 'Run'
+
+*******************************************************************************/
+#include <stdio.h>
+
+int main()
+{
+    int numeros[100];
+    int contador;
+    
+    for(contador = 0; contador < 100; contador++)
+    {
+        numeros[contador] = contador+1;
+        if(numeros[contador]%5 == 0 && numeros[contador]%3 == 0){
+            printf("FooBaa\n");
+        }else if(numeros[contador]%5 == 0){
+            printf("Baa\n");
+        }else if(numeros[contador]%3 == 0){
+            printf("Foo\n");
+        }else{
+            printf("%d\n",numeros[contador]);
+        }
+    }
+    return 0;
+}
