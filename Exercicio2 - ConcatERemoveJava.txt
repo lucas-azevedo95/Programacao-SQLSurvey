@@ -1,0 +1,119 @@
+/******************************************************************************
+
+Para testar o código, vá ao endereço https://www.onlinegdb.com/ , copie e cole o código abaixo,
+no canto superior direito altere a linguagem, no campo 'Language', para 'Java' e depois no canto
+superior esquerdo clique em 'Run'.
+
+Ao avaliador do código, estou considerando que o exercício solicitou somente verificar a possibilidade de transformar
+a 'string 2' em 'string 1' em 'X' movimentos, sem literalmente efetuar essa transformação.
+
+*******************************************************************************/
+
+import java.util.Scanner;
+import java.lang.Object;
+
+public class Main
+{
+    
+    public static String ConcatERemove(String i, String d, int o){
+        
+        int c;
+        int y;
+        int movMinimos = 0;
+        String resultado;
+        String palavraInicial;
+        String palavraDesejada;
+        
+        for (c = 0; c <= i.length(); c++) {
+            for (y = 0; y <= d.length(); y++) {
+                palavraInicial = i.substring(0, i.length() - c);
+                palavraDesejada = d.substring(0, d.length() - y);
+                
+                if(palavraInicial.equals(palavraDesejada) && c != 0){
+                    movMinimos = c+y;
+                    break;
+                }else if(palavraInicial.equals(palavraDesejada)){
+                    movMinimos = palavraInicial.length()+palavraDesejada.length();
+                    break;
+                }
+            }
+            
+            if(movMinimos != 0){
+                break;
+            }
+        }
+        
+        if(movMinimos <= o){
+            resultado = "Sim";
+        }else{
+            resultado = "Não";
+        }
+        
+        return resultado;
+    }
+    
+    public static boolean validaString(String s) {
+        for(char c : s.toCharArray()) {
+           if(!Character.isLetter(c) || Character.isUpperCase(c)) {
+               return false;
+           }
+        }
+        
+        if(s.length() > 100){
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public static boolean validaMov(int i) {
+        
+        if(i > 100){
+            return true;
+        }
+        
+        return false;
+    }
+    
+	public static void main(String[] args) {
+	    
+	    String inicial;
+	    String desejada;
+	    String resultado;
+	    int operacoes;
+	    
+		Scanner ler = new Scanner(System.in); /* criando uma instância do objeto Scanner*/
+		
+		System.out.printf("Informe a string inicial:\n");
+        inicial = ler.next();
+        
+        while(!validaString(inicial)){
+            System.out.printf("O texto informado não pode conter letras maiúsculas ou números, nem ultrapassar os 100 caracteres.\n");
+            System.out.printf("Informe uma string válida:\n");
+            inicial = ler.next();
+        }
+        
+		System.out.printf("Informe a string desejada:\n");
+        desejada = ler.next();
+        
+        while(!validaString(desejada)){
+            System.out.printf("O texto informado não pode conter letras maiúsculas ou números.\n");
+            System.out.printf("Informe uma string válida:\n");
+            desejada = ler.next();
+        }
+        
+		System.out.printf("Informe o número de operações desejado:\n");
+        operacoes = ler.nextInt();
+        
+        while(validaMov(operacoes)){
+            System.out.printf("O número de operações desejadas não pode ultrapassar o valor 100.\n");
+            System.out.printf("Informe um número válido:\n");
+            operacoes = ler.nextInt();
+        }
+        
+        resultado = ConcatERemove(inicial, desejada, operacoes);
+        
+        System.out.println(resultado);
+	}
+}
+
