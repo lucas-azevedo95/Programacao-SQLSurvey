@@ -1,0 +1,35 @@
+/******************************************************************************
+
+Para testar o código, vá ao endereço https://www.onlinegdb.com/ , copie e cole o código abaixo,
+no canto superior direito altere a linguagem, no campo 'Language', para 'Java' e depois no canto
+superior esquerdo clique em 'Run'.
+
+Para não utilizar alguma função de contagem, explodi a string em caracteres e depois utilizei um laço 
+de repetição p/ percorrer e contar os mesmos.
+
+*******************************************************************************/
+
+import java.util.Scanner;
+import java.lang.Object;
+
+public class Main
+{
+    
+	public static void main(String[] args) {
+	    
+	    String stg;
+	    int tamanho = 0;
+	    
+		Scanner ler = new Scanner(System.in); /* criando uma instância do objeto Scanner*/
+		
+		System.out.printf("Informe uma string:\n");
+        stg = ler.next();
+        
+        for(char c : stg.toCharArray()) {
+            tamanho++;
+        }
+        
+        System.out.printf("O tamanho da string é: %d", tamanho);
+	}
+}
+
