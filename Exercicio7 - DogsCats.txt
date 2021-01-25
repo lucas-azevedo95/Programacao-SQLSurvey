@@ -1,0 +1,37 @@
+/* Para testar o código, vá ao endereço https://sqliteonline.com/ , copie e cole o código abaixo,
+no canto esquerdo altere o banco para 'SQLite', e depois no canto superior esquerdo clique em 'Run' */
+
+CREATE TABLE Dogs (
+    ID int not NULL PRIMARY KEY,
+    name varchar(50) NOT NULL
+);
+
+CREATE TABLE Cats (
+    ID int not NULL PRIMARY KEY,
+    name varchar(50) NOT NULL
+);
+
+INSERT INTO Dogs (ID, name)
+VALUES (1, 'Bidu'),
+	   (2, 'Nara'),
+       (3, 'Caco'),
+       (4, 'Mel'),
+       (5, 'Pandora'),
+       (6, 'Salem');
+       
+INSERT INTO Cats (ID, name)
+VALUES (1, 'Gaia'),
+	   (2, 'Era'),
+       (3, 'Morfeu'),
+       (4, 'Romeu'),
+       (5, 'Pandora'),
+       (6, 'Salem');
+
+
+SELECT DISTINCT name 
+FROM Dogs
+
+union 
+
+SELECT DISTINCT name
+from Cats;
