@@ -1,0 +1,54 @@
+/* Para testar o código, vá ao endereço https://sqliteonline.com/ , copie e cole o código abaixo,
+no canto esquerdo altere o banco para 'SQLite', e depois no canto superior esquerdo clique em 'Run' */
+
+CREATE TABLE Alunos (
+    ID int NOT NULL PRIMARY KEY,
+    Nome varchar(255),
+    Valor INT
+);
+
+CREATE TABLE Notas (
+    Nota int,
+    Valor_Min INT,
+    Valor_Max INT
+);
+
+INSERT INTO Alunos (ID, Nome, Valor)
+VALUES (1, 'Julia', 88),
+	   (2, 'Carol', 68),
+       (3, 'Maria', 99),
+       (4, 'Andreia', 78),
+       (5, 'Jaqueline', 63),
+       (6, 'Marcela', 81);
+       
+INSERT INTO Notas (Nota, valor_min, valor_max)
+VALUES (1, 0, 9),
+	   (2, 10, 19),
+       (3, 20, 29),
+       (4, 30, 39),
+       (5, 40, 49),
+       (6, 50, 59),
+       (7, 60, 69),
+       (8, 70, 79),
+       (9, 80, 89),
+       (10, 90, 100);
+
+
+SELECT 
+
+CASE
+	WHEN (Select Nota
+ 		  from Notas AS N
+ 		  WHERE A.Valor BETWEEN N.Valor_Min AND N.Valor_Max) < 8 then NULL
+    ELSE a.Nome 
+END AS Nome,
+    
+(Select Nota
+ from Notas AS N
+ WHERE A.Valor BETWEEN n.Valor_Min AND N.Valor_Max) as Nota, 
+ 
+ A.Valor
+ 
+from Alunos as A
+
+order by Nota DESC, A.nome DESC;
